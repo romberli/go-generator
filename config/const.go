@@ -22,39 +22,28 @@ import (
 
 // global constant
 const (
-	DefaultCommandName        = "go-template-cli"
-	DefaultDaemon             = false
-	DefaultBaseDir            = constant.CurrentDir
-	DefaultLogDir             = "./log"
-	MinLogMaxSize             = 1
-	MaxLogMaxSize             = constant.MaxInt
-	MinLogMaxDays             = 1
-	MaxLogMaxDays             = constant.MaxInt
-	MinLogMaxBackups          = 1
-	MaxLogMaxBackups          = constant.MaxInt
-	DefaultServerAddr         = "0.0.0.0:80"
-	DefaultServerReadTimeout  = 5
-	DefaultServerWriteTimeout = 10
-	MinServerReadTimeout      = 0
-	MaxServerReadTimeout      = 60
-	MinServerWriteTimeout     = 1
-	MaxServerWriteTimeout     = 60
-	DaemonArgTrue             = "--daemon=true"
-	DaemonArgFalse            = "--daemon=false"
+	DefaultCommandName = "go-generator"
+	DefaultDaemon      = false
+	DefaultBaseDir     = constant.CurrentDir
+	DefaultLogDir      = "./log"
+	MinLogMaxSize      = 1
+	MaxLogMaxSize      = constant.MaxInt
+	MinLogMaxDays      = 1
+	MaxLogMaxDays      = constant.MaxInt
+	MinLogMaxBackups   = 1
+	MaxLogMaxBackups   = constant.MaxInt
+	DefaultStructFile  = "struct.txt"
+	DefaultOutputFile  = "output.txt"
 )
 
 // configuration constant
 const (
-	ConfKey               = "config"
-	DaemonKey             = "daemon"
-	LogFileNameKey        = "log.fileName"
-	LogLevelKey           = "log.level"
-	LogFormatKey          = "log.format"
-	LogMaxSizeKey         = "log.maxSize"
-	LogMaxDaysKey         = "log.maxDays"
-	LogMaxBackupsKey      = "log.maxBackups"
-	ServerAddrKey         = "server.addr"
-	ServerPidFileKey      = "server.pidFile"
-	ServerReadTimeoutKey  = "server.readTimeout"
-	ServerWriteTimeoutKey = "server.writeTimeout"
+	ConfKey          = "config"
+	DaemonKey        = "daemon"
+	LogFileNameKey   = "log.fileName"
+	LogLevelKey      = "log.level"
+	LogFormatKey     = "log.format"
+	LogMaxSizeKey    = "log.maxSize"
+	LogMaxDaysKey    = "log.maxDays"
+	LogMaxBackupsKey = "log.maxBackups"
 )

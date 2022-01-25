@@ -1,2 +1,2 @@
-# go-template-web
-go-template-web is a template of golang web server.
+# go-generator
+go-generator is a code generator for struct getter methods
