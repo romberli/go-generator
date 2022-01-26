@@ -20,11 +20,8 @@ import (
 	"os"
 
 	"github.com/romberli/go-util/constant"
-	"github.com/romberli/go-util/linux"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 
-	"github.com/romberli/go-template/config"
 	"github.com/romberli/go-template/pkg/message"
 )
 
@@ -35,8 +32,7 @@ var statusCmd = &cobra.Command{
 	Long:  `print server status.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		var (
-			err       error
-			isRunning bool
+			err error
 		)
 
 		// init config
@@ -44,40 +40,6 @@ var statusCmd = &cobra.Command{
 		if err != nil {
 			fmt.Println(fmt.Sprintf("%+v", message.NewMessage(message.ErrInitConfig, err)))
 			os.Exit(constant.DefaultAbnormalExitCode)
-		}
-
-		// check if given pid is running
-		if serverPid != constant.DefaultRandomInt {
-			isRunning, err = linux.IsRunningWithPid(serverPid)
-			if err != nil {
-				fmt.Println(fmt.Sprintf("%+v", message.NewMessage(message.ErrCheckServerRunningStatus, err)))
-				os.Exit(constant.DefaultAbnormalExitCode)
-			}
-			if isRunning {
-				fmt.Println(message.NewMessage(message.InfoServerIsRunning, serverPid).Error())
-			} else {
-				fmt.Println(message.NewMessage(message.InfoServerNotRunning, serverPid).Error())
-			}
-
-			os.Exit(constant.DefaultNormalExitCode)
-		}
-
-		// get pid
-		serverPidFile = viper.GetString(config.ServerPidFileKey)
-		serverPid, err = linux.GetPidFromPidFile(serverPidFile)
-		if err != nil {
-			fmt.Println(fmt.Sprintf("%+v", message.NewMessage(message.ErrGetPidFromPidFile, err, serverPidFile)))
-			os.Exit(constant.DefaultAbnormalExitCode)
-		}
-		isRunning, err = linux.IsRunningWithPid(serverPid)
-		if err != nil {
-			fmt.Println(fmt.Sprintf("%+v", message.NewMessage(message.ErrCheckServerRunningStatus, err)))
-			os.Exit(constant.DefaultAbnormalExitCode)
-		}
-		if isRunning {
-			fmt.Println(message.NewMessage(message.InfoServerIsRunning, serverPid).Error())
-		} else {
-			fmt.Println(message.NewMessage(message.InfoServerNotRunning, serverPid).Error())
 		}
 
 		os.Exit(constant.DefaultNormalExitCode)
@@ -92,7 +54,6 @@ func init() {
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
 	// statusCmd.PersistentFlags().String("foo", "", "A help for foo")
-	statusCmd.PersistentFlags().IntVar(&serverPid, "server-pid", constant.DefaultRandomInt, fmt.Sprintf("specify the server pid"))
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:

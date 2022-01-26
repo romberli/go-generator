@@ -19,13 +19,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/romberli/go-template/config"
 	"github.com/romberli/go-template/pkg/message"
 	"github.com/romberli/go-util/constant"
-	"github.com/romberli/go-util/linux"
-	"github.com/romberli/log"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
 
 // stopCmd represents the stop command
@@ -45,34 +41,6 @@ var stopCmd = &cobra.Command{
 			os.Exit(constant.DefaultAbnormalExitCode)
 		}
 
-		// shutdown server with given pid
-		if serverPid != constant.DefaultRandomInt {
-			err = linux.ShutdownServer(serverPid)
-			if err != nil {
-				log.CloneStdoutLogger().Errorf("%+v", message.NewMessage(message.ErrKillServerWithPid, err, serverPid))
-				os.Exit(constant.DefaultAbnormalExitCode)
-			}
-
-			log.CloneStdoutLogger().Info(message.NewMessage(message.InfoServerStop, serverPid).Error())
-			os.Exit(constant.DefaultNormalExitCode)
-		}
-
-		// get pid from pid file
-		serverPidFile = viper.GetString(config.ServerPidFileKey)
-		serverPid, err = linux.GetPidFromPidFile(serverPidFile)
-		if err != nil {
-			log.CloneStdoutLogger().Errorf("%+v", message.NewMessage(message.ErrGetPidFromPidFile, err, serverPidFile))
-			os.Exit(constant.DefaultAbnormalExitCode)
-		}
-
-		// kill server with pid and pid file
-		err = linux.KillServer(serverPid, serverPidFile)
-		if err != nil {
-			log.CloneStdoutLogger().Errorf("%+v", message.NewMessage(message.ErrKillServerWithPidFile, err, serverPid, serverPidFile))
-			os.Exit(constant.DefaultAbnormalExitCode)
-		}
-
-		log.CloneStdoutLogger().Info(message.NewMessage(message.InfoServerStop, serverPid, serverPidFile).Error())
 		os.Exit(constant.DefaultNormalExitCode)
 	},
 }
@@ -85,7 +53,6 @@ func init() {
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
 	// stopCmd.PersistentFlags().String("foo", "", "A help for foo")
-	stopCmd.PersistentFlags().IntVar(&serverPid, "server-pid", constant.DefaultRandomInt, fmt.Sprintf("specify the server pid"))
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
