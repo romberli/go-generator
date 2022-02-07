@@ -18,13 +18,16 @@ package cmd
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
 
 	"github.com/pingcap/errors"
 	"github.com/romberli/go-generator/config"
+	"github.com/romberli/go-generator/pkg/generator"
 	"github.com/romberli/go-generator/pkg/message"
+	msggenerator "github.com/romberli/go-generator/pkg/message/generator"
 	"github.com/romberli/go-util/constant"
 	"github.com/romberli/log"
 	"github.com/spf13/cobra"
@@ -72,6 +75,26 @@ var rootCmd = &cobra.Command{
 			fmt.Println(fmt.Sprintf("%+v", message.NewMessage(message.ErrInitConfig, err)))
 			os.Exit(constant.DefaultAbnormalExitCode)
 		}
+		// read struct file
+		source, err := ioutil.ReadFile(viper.GetString(config.StructFileKey))
+		if err != nil {
+			fmt.Println(fmt.Sprintf("%+v", message.NewMessage(message.ErrReadStructFile, err)))
+			os.Exit(constant.DefaultAbnormalExitCode)
+		}
+		// init generator
+		generator := generator.NewGeneratorWithDefault()
+		// generate getter
+		data, err := generator.GenerateGetter(source)
+		if err != nil {
+			fmt.Println(fmt.Sprintf("%+v", message.NewMessage(msggenerator.ErrGenerateGetter, err)))
+			os.Exit(constant.DefaultAbnormalExitCode)
+		}
+		// write output file
+		err = ioutil.WriteFile(viper.GetString(config.OutputFileKey), data, constant.DefaultFileMode)
+		if err != nil {
+			fmt.Println(fmt.Sprintf("%+v", message.NewMessage(message.ErrWriteOutputFile, err)))
+			os.Exit(constant.DefaultAbnormalExitCode)
+		}
 	},
 }
 
@@ -100,8 +123,8 @@ func init() {
 	rootCmd.PersistentFlags().IntVar(&logMaxSize, "log-max-size", constant.DefaultRandomInt, fmt.Sprintf("specify the log file max size(default: %d)", log.DefaultLogMaxSize))
 	rootCmd.PersistentFlags().IntVar(&logMaxDays, "log-max-days", constant.DefaultRandomInt, fmt.Sprintf("specify the log file max days(default: %d)", log.DefaultLogMaxDays))
 	rootCmd.PersistentFlags().IntVar(&logMaxBackups, "log-max-backups", constant.DefaultRandomInt, fmt.Sprintf("specify the log file max backups(default: %d)", log.DefaultLogMaxBackups))
-	rootCmd.PersistentFlags().StringVar(&structFile, "struct-file", constant.DefaultRandomString, fmt.Sprintf("specify the struct file(default: %d)", config.DefaultStructFile))
-	rootCmd.PersistentFlags().StringVar(&outputFile, "output-file", constant.DefaultRandomString, fmt.Sprintf("specify the write timeout in seconds of http request(default: %d)", config.DefaultOutputFile))
+	rootCmd.PersistentFlags().StringVarP(&structFile, "struct-file", "f", constant.DefaultRandomString, fmt.Sprintf("specify the struct file(default: %s)", config.DefaultStructFile))
+	rootCmd.PersistentFlags().StringVarP(&outputFile, "output-file", "o", constant.DefaultRandomString, fmt.Sprintf("specify the output file (default: %s)", config.DefaultOutputFile))
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
@@ -219,6 +242,16 @@ func OverrideConfig() (err error) {
 	}
 	if logMaxBackups != constant.DefaultRandomInt {
 		viper.Set(config.LogMaxBackupsKey, logMaxBackups)
+	}
+
+	// override struct file
+	if structFile != constant.DefaultRandomString {
+		viper.Set(config.StructFileKey, structFile)
+	}
+
+	// override output file
+	if outputFile != constant.DefaultRandomString {
+		viper.Set(config.OutputFileKey, outputFile)
 	}
 
 	// validate configuration

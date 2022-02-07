@@ -1,7 +1,7 @@
 # description: configuration file path, if it's specified as relative path,
 # then directory of binary file will be the base directory of configuration file,
 # it is recommended to specify absolute path.
-# command-line-argument: --config
+# command line argument: --config
 # type: string
 # default: None
 config: go_template_web.yaml
@@ -10,7 +10,7 @@ config: go_template_web.yaml
 # never set this argument to true in config file, always use command line argument by using --daemon=true,
 # das ignore this argument setting in the configuration file, because this may cause endless loop,
 # writing here only for describing purpose.
-# command-line-argument: --daemon
+# command line argument: --daemon
 # type: bool
 # default: false
 daemon: false
@@ -51,28 +51,43 @@ log:
 # server configuration
 server:
   # description: specify the server listening address, format: host:port
-  # command-line-argument: --server-addr
+  # command line argument: --server-addr
   # type: string
   # default: 0.0.0.0:6090
   addr: "0.0.0.0:6090"
   # description: pid file path, if it's specified as relative path,
   # then directory of binary file will be the base directory of log file,
   # it is recommended to specify absolute path.
-  # command-line-argument: --server-pid-file
+  # command line argument: --server-pid-file
   # type: string
   # default: go_template_web.pid
   pidFile: go_template_web.pid
   # description: specify the read timeout of http request, 0 means no timeout
-  # command-line-argument: --server-read-timeout
+  # command line argument: --server-read-timeout
   # unit: second
   # type: int
   # available: 0 - 60
   # default: 5
   readTimeout: 5
   # description: specify the write timeout of http resp, 0 means no timeout
-  # command-line-argument: --server-write-timeout
+  # command line argument: --server-write-timeout
   # unit: second
   # type: int
   # available: 0 - 60
   # default: 10
   writeTimeout: 10
+  
+# description: specify the struct file
+# command line argument: --struct-file
+# short hand: -f
+# type: string
+# default: "struct.txt"
+structFile: "struct.txt"
+
+# description: specify the output file
+# command line argument: --output-file
+# short hand: -o
+# type: string
+# default: "output.txt"
+outputFile: "output.txt"
+

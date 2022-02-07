@@ -46,4 +46,6 @@ const (
 	LogMaxSizeKey    = "log.maxSize"
 	LogMaxDaysKey    = "log.maxDays"
 	LogMaxBackupsKey = "log.maxBackups"
+	StructFileKey    = "structFile"
+	OutputFileKey    = "outputFile"
 )

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/romberli/go-generator/pkg/lexer"
 	"github.com/romberli/go-generator/pkg/parser"
 	"github.com/romberli/go-generator/pkg/util"
 	"github.com/romberli/go-util/constant"
@@ -17,6 +18,10 @@ func NewGenerator(parser *parser.Parser) *Generator {
 	return &Generator{
 		parser: parser,
 	}
+}
+
+func NewGeneratorWithDefault() *Generator {
+	return NewGenerator(parser.NewParser(lexer.NewLexer(lexer.NewDFAWithDefault())))
 }
 
 func (g *Generator) GetParser() *parser.Parser {

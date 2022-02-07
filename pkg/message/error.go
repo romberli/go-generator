@@ -36,18 +36,24 @@ const (
 	ErrGetPidFromPidFile          = 400029
 	ErrSetSid                     = 400030
 	ErrRemovePidFile              = 400031
+	ErrEmptyStructFile            = 400032
+	ErrNotValidStructFile         = 400033
+	ErrReadStructFile             = 400034
+	ErrEmptyOutputFile            = 400035
+	ErrNotValidOutputFile         = 400036
+	ErrWriteOutputFile            = 400037
 )
 
 func initErrorMessage() {
 	Messages[ErrPrintHelpInfo] = config.NewErrMessage(DefaultMessageHeader, ErrPrintHelpInfo, "got message when printing help information")
-	Messages[ErrEmptyLogFileName] = config.NewErrMessage(DefaultMessageHeader, ErrEmptyLogFileName, "Log file name could not be an empty string")
-	Messages[ErrNotValidLogFileName] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidLogFileName, "Log file name must be either unix or windows path format, %s is not valid")
-	Messages[ErrNotValidLogLevel] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidLogLevel, "Log level must be one of [debug, info, warn, message, fatal], %s is not valid")
-	Messages[ErrNotValidLogFormat] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidLogFormat, "Log level must be either text or json, %s is not valid")
-	Messages[ErrNotValidLogMaxSize] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidLogMaxSize, "Log max size must be between %d and %d, %d is not valid")
-	Messages[ErrNotValidLogMaxDays] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidLogMaxDays, "Log max days must be between %d and %d, %d is not valid")
-	Messages[ErrNotValidLogMaxBackups] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidLogMaxBackups, "Log max backups must be between %d and %d, %d is not valid")
-	Messages[ErrNotValidServerPort] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidServerPort, "Server port must be between %d and %d, %d is not valid")
+	Messages[ErrEmptyLogFileName] = config.NewErrMessage(DefaultMessageHeader, ErrEmptyLogFileName, "log file name could not be an empty string")
+	Messages[ErrNotValidLogFileName] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidLogFileName, "log file name must be either unix or windows path format, %s is not valid")
+	Messages[ErrNotValidLogLevel] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidLogLevel, "log level must be one of [debug, info, warn, message, fatal], %s is not valid")
+	Messages[ErrNotValidLogFormat] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidLogFormat, "log level must be either text or json, %s is not valid")
+	Messages[ErrNotValidLogMaxSize] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidLogMaxSize, "log max size must be between %d and %d, %d is not valid")
+	Messages[ErrNotValidLogMaxDays] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidLogMaxDays, "log max days must be between %d and %d, %d is not valid")
+	Messages[ErrNotValidLogMaxBackups] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidLogMaxBackups, "log max backups must be between %d and %d, %d is not valid")
+	Messages[ErrNotValidServerPort] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidServerPort, "server port must be between %d and %d, %d is not valid")
 	Messages[ErrNotValidServerAddr] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidServerAddr, "server addr must be formatted as host:port, %s is not valid")
 	Messages[ErrNotValidPidFile] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidPidFile, "pid file name must be either unix or windows path format, %s is not valid")
 	Messages[ErrNotValidServerReadTimeout] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidServerReadTimeout, "server read timeout must be between %d and %d, %d is not valid")
@@ -70,4 +76,10 @@ func initErrorMessage() {
 	Messages[ErrGetPidFromPidFile] = config.NewErrMessage(DefaultMessageHeader, ErrGetPidFromPidFile, "get pid from pid file failed. pid file: %s")
 	Messages[ErrSetSid] = config.NewErrMessage(DefaultMessageHeader, ErrSetSid, "set sid failed when daemonizing server")
 	Messages[ErrRemovePidFile] = config.NewErrMessage(DefaultMessageHeader, ErrRemovePidFile, "remove pid file failed. pid file: %s")
+	Messages[ErrEmptyStructFile] = config.NewErrMessage(DefaultMessageHeader, ErrEmptyStructFile, "struct file could not be an empty string")
+	Messages[ErrNotValidStructFile] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidStructFile, "struct file must be either unix or windows path format, %s is not valid")
+	Messages[ErrReadStructFile] = config.NewErrMessage(DefaultMessageHeader, ErrReadStructFile, "read struct file failed")
+	Messages[ErrEmptyOutputFile] = config.NewErrMessage(DefaultMessageHeader, ErrEmptyOutputFile, "output file could not be an empty string")
+	Messages[ErrNotValidOutputFile] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidOutputFile, "output file must be either unix or windows path format, %s is not valid")
+	Messages[ErrWriteOutputFile] = config.NewErrMessage(DefaultMessageHeader, ErrWriteOutputFile, "write output file failed")
 }

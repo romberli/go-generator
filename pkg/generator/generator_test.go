@@ -3,8 +3,6 @@ package generator
 import (
 	"testing"
 
-	"github.com/romberli/go-generator/pkg/lexer"
-	"github.com/romberli/go-generator/pkg/parser"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -15,7 +13,7 @@ var (
 )
 
 func init() {
-	testGenerator = NewGenerator(parser.NewParser(lexer.NewLexer(lexer.NewNFAWithDefault())))
+	testGenerator = NewGeneratorWithDefault()
 }
 
 func TestAll(t *testing.T) {
