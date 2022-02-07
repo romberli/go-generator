@@ -8,6 +8,7 @@ require (
 	github.com/asaskevich/govalidator v0.0.0-20200819183940-29e1ff8eb0bb
 	github.com/pingcap/errors v0.11.5-0.20211224045212-9687c2b0f87c
 	github.com/romberli/go-multierror v1.1.2-0.20220118054508-60f25a547317
+	github.com/romberli/go-template v0.0.0-20220125111919-deef3d7d1824
 	github.com/romberli/go-util v0.3.16-0.20220118113326-670556dae50a
 	github.com/romberli/log v1.0.21-0.20220118103033-fc370f89c0ea
 	github.com/spf13/cast v1.3.1

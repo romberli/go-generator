@@ -22,7 +22,7 @@ import (
 	"github.com/romberli/go-util/constant"
 	"github.com/spf13/cobra"
 
-	"github.com/romberli/go-template/pkg/message"
+	"github.com/romberli/go-generator/pkg/message"
 )
 
 // statusCmd represents the status command

@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/romberli/go-template/pkg/message"
+	"github.com/romberli/go-generator/pkg/message"
 	"github.com/romberli/go-util/constant"
 	"github.com/spf13/cobra"
 )

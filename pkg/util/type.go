@@ -2,6 +2,7 @@ package util
 
 import (
 	"fmt"
+	"unicode"
 
 	"github.com/romberli/go-util/constant"
 )
@@ -50,13 +51,13 @@ func (s *Struct) GetShortName() string {
 	)
 	for i, c := range s.Name {
 		if i == constant.ZeroInt {
-			runes = append(runes, c)
+			runes = append(runes, unicode.ToLower(c))
 			continue
 		}
 
 		if c >= 'A' && c <= 'Z' && !isUppercase {
 			isUppercase = true
-			runes = append(runes, c)
+			runes = append(runes, unicode.ToLower(c))
 			continue
 		}
 

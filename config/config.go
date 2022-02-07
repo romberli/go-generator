@@ -23,8 +23,8 @@ import (
 
 	"github.com/asaskevich/govalidator"
 	"github.com/pingcap/errors"
+	"github.com/romberli/go-generator/pkg/message"
 	"github.com/romberli/go-multierror"
-	"github.com/romberli/go-template/pkg/message"
 	"github.com/romberli/go-util/common"
 	"github.com/romberli/go-util/constant"
 	"github.com/romberli/log"
