@@ -42,6 +42,7 @@ func (p *Parser) Parse(bytes []byte) ([]*util.Struct, error) {
 
 func (p *Parser) ParseStruct(tokens []*token.Token) (*util.Struct, error) {
 	p.next = constant.ZeroInt
+	p.fields = nil
 	s := util.NewEmptyStruct()
 
 	// type keyword
@@ -104,6 +105,7 @@ func (p *Parser) ParseField(tokens []*token.Token) error {
 	}
 	// epsilon
 	p.next = save
+
 	return nil
 }
 

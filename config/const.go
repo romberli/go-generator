@@ -32,7 +32,7 @@ const (
 	MaxLogMaxDays      = constant.MaxInt
 	MinLogMaxBackups   = 1
 	MaxLogMaxBackups   = constant.MaxInt
-	DefaultStructFile  = "struct.txt"
+	DefaultStructFile  = "struct.go"
 	DefaultOutputFile  = "output.txt"
 )
 

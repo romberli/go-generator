@@ -31,9 +31,9 @@ func (s *Struct) Reveal() string {
 		case 1:
 			fieldStr = fmt.Sprintf("    %s\n", field.Type)
 		case 2:
-			fieldStr = fmt.Sprintf("    %s\t\t%s\n", field.Name, field.Type)
+			fieldStr = fmt.Sprintf("    %s    %s\n", field.Name, field.Type)
 		case 3:
-			fieldStr = fmt.Sprintf("    %s\t\t%s\t\t%s\n", field.Name, field.Type, field.Tag)
+			fieldStr = fmt.Sprintf("    %s    %s    %s\n", field.Name, field.Type, field.Tag)
 		}
 
 		str += fieldStr

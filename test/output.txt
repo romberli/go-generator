@@ -1,0 +1,96 @@
+type TestStruct struct {
+    dependency.FiniteAutomata
+    fieldA    string    `json:"field_a" middle_ware:"field_a"`
+    fieldB    int64    `json:"field_b,omitempty"`
+    fieldC    *map[time.Time]string
+    *token.Token
+    fieldD    **[][5]map[*time.Time][]***[10]**[0]map[int64]map[**string]**token.Token
+}
+
+// GetFiniteAutomata returns FiniteAutomata
+func (ts *TestStruct) GetFiniteAutomata() dependency.FiniteAutomata {
+    return ts.FiniteAutomata
+}
+
+// GetFieldA returns fieldA
+func (ts *TestStruct) GetFieldA() string {
+    return ts.fieldA
+}
+
+// GetFieldB returns fieldB
+func (ts *TestStruct) GetFieldB() int64 {
+    return ts.fieldB
+}
+
+// GetFieldC returns fieldC
+func (ts *TestStruct) GetFieldC() *map[time.Time]string {
+    return ts.fieldC
+}
+
+// GetToken returns Token
+func (ts *TestStruct) GetToken() *token.Token {
+    return ts.Token
+}
+
+// GetFieldD returns fieldD
+func (ts *TestStruct) GetFieldD() **[][5]map[*time.Time][]***[10]**[0]map[int64]map[**string]**token.Token {
+    return ts.fieldD
+}
+
+type DefaultEngine struct {
+    operationInfo    healthcheck.OperationInfo
+    engineConfig    DefaultEngineConfig
+    result    *Result
+    mountPoints    []string
+    devices    []string
+    dasRepo    healthcheck.DASRepo
+    applicationMySQLRepo    healthcheck.ApplicationMySQLRepo
+    prometheusRepo    healthcheck.PrometheusRepo
+    queryRepo    healthcheck.QueryRepo
+}
+
+// GetOperationInfo returns operationInfo
+func (de *DefaultEngine) GetOperationInfo() healthcheck.OperationInfo {
+    return de.operationInfo
+}
+
+// GetEngineConfig returns engineConfig
+func (de *DefaultEngine) GetEngineConfig() DefaultEngineConfig {
+    return de.engineConfig
+}
+
+// GetResult returns result
+func (de *DefaultEngine) GetResult() *Result {
+    return de.result
+}
+
+// GetMountPoints returns mountPoints
+func (de *DefaultEngine) GetMountPoints() []string {
+    return de.mountPoints
+}
+
+// GetDevices returns devices
+func (de *DefaultEngine) GetDevices() []string {
+    return de.devices
+}
+
+// GetDasRepo returns dasRepo
+func (de *DefaultEngine) GetDasRepo() healthcheck.DASRepo {
+    return de.dasRepo
+}
+
+// GetApplicationMySQLRepo returns applicationMySQLRepo
+func (de *DefaultEngine) GetApplicationMySQLRepo() healthcheck.ApplicationMySQLRepo {
+    return de.applicationMySQLRepo
+}
+
+// GetPrometheusRepo returns prometheusRepo
+func (de *DefaultEngine) GetPrometheusRepo() healthcheck.PrometheusRepo {
+    return de.prometheusRepo
+}
+
+// GetQueryRepo returns queryRepo
+func (de *DefaultEngine) GetQueryRepo() healthcheck.QueryRepo {
+    return de.queryRepo
+}
+

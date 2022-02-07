@@ -59,15 +59,15 @@ var rootCmd = &cobra.Command{
 	Long:  `go-generator is a template of golang command line program`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// if no subcommand is set, it will print help information.
-		if len(args) == 0 {
-			err := cmd.Help()
-			if err != nil {
-				fmt.Println(fmt.Sprintf("%+v", message.NewMessage(message.ErrPrintHelpInfo, errors.Trace(err))))
-				os.Exit(constant.DefaultAbnormalExitCode)
-			}
-
-			os.Exit(constant.DefaultNormalExitCode)
-		}
+		// if len(args) == 0 {
+		// 	err := cmd.Help()
+		// 	if err != nil {
+		// 		fmt.Println(fmt.Sprintf("%+v", message.NewMessage(message.ErrPrintHelpInfo, errors.Trace(err))))
+		// 		os.Exit(constant.DefaultAbnormalExitCode)
+		// 	}
+		//
+		// 	os.Exit(constant.DefaultNormalExitCode)
+		// }
 
 		// init config
 		err := initConfig()

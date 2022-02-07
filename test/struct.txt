@@ -1,0 +1,20 @@
+type TestStruct struct {
+    dependency.FiniteAutomata
+    fieldA string `json:"field_a" middle_ware:"field_a"`
+    fieldB int64  `json:"field_b,omitempty"`
+    fieldC *map[time.Time]string
+    *token.Token
+    fieldD **[][5]map[*time.Time][]***[10]**[0]map[int64]map[**string]**token.Token
+}
+
+type DefaultEngine struct {
+	operationInfo        healthcheck.OperationInfo
+	engineConfig         DefaultEngineConfig
+	result               *Result
+	mountPoints          []string
+	devices              []string
+	dasRepo              healthcheck.DASRepo
+	applicationMySQLRepo healthcheck.ApplicationMySQLRepo
+	prometheusRepo       healthcheck.PrometheusRepo
+	queryRepo            healthcheck.QueryRepo
+}

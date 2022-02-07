@@ -81,8 +81,8 @@ server:
 # command line argument: --struct-file
 # short hand: -f
 # type: string
-# default: "struct.txt"
-structFile: "struct.txt"
+# default: "struct.go"
+structFile: "struct.go"
 
 # description: specify the output file
 # command line argument: --output-file
