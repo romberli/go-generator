@@ -32,3 +32,4 @@ http-client.env.json
 go_template.pid
 go_template.yaml
 test/generator
+test/test.txt
