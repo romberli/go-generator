@@ -56,7 +56,7 @@ var (
 var rootCmd = &cobra.Command{
 	Use:   "go-generator",
 	Short: "go-generator",
-	Long:  `go-generator is a template of golang command line program`,
+	Long:  `go-generator is a code generator for struct getter methods`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// init config
 		err := initConfig()
