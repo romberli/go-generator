@@ -26,22 +26,12 @@ const (
 	ErrInitLogger                 = 400019
 	ErrBaseDir                    = 400020
 	ErrInitConfig                 = 400021
-	ErrCheckServerPid             = 400022
-	ErrCheckServerRunningStatus   = 400023
-	ErrServerIsRunning            = 400024
-	ErrStartAsForeground          = 400025
-	ErrSavePidToFile              = 400026
-	ErrKillServerWithPid          = 400027
-	ErrKillServerWithPidFile      = 400028
-	ErrGetPidFromPidFile          = 400029
-	ErrSetSid                     = 400030
-	ErrRemovePidFile              = 400031
-	ErrEmptyStructFile            = 400032
-	ErrNotValidStructFile         = 400033
-	ErrReadStructFile             = 400034
-	ErrEmptyOutputFile            = 400035
-	ErrNotValidOutputFile         = 400036
-	ErrWriteOutputFile            = 400037
+	ErrEmptyStructFile            = 400022
+	ErrNotValidStructFile         = 400023
+	ErrReadStructFile             = 400024
+	ErrEmptyOutputFile            = 400025
+	ErrNotValidOutputFile         = 400026
+	ErrWriteOutputFile            = 400027
 )
 
 func initErrorMessage() {
@@ -66,16 +56,6 @@ func initErrorMessage() {
 	Messages[ErrInitLogger] = config.NewErrMessage(DefaultMessageHeader, ErrInitLogger, "initialize logger failed")
 	Messages[ErrBaseDir] = config.NewErrMessage(DefaultMessageHeader, ErrBaseDir, "get base dir of %s failed")
 	Messages[ErrInitConfig] = config.NewErrMessage(DefaultMessageHeader, ErrInitConfig, "init config failed")
-	Messages[ErrCheckServerPid] = config.NewErrMessage(DefaultMessageHeader, ErrCheckServerPid, "check server pid file failed")
-	Messages[ErrCheckServerRunningStatus] = config.NewErrMessage(DefaultMessageHeader, ErrCheckServerRunningStatus, "check server running status failed")
-	Messages[ErrServerIsRunning] = config.NewErrMessage(DefaultMessageHeader, ErrServerIsRunning, "pid file exists or server is still running. pid file: %s")
-	Messages[ErrStartAsForeground] = config.NewErrMessage(DefaultMessageHeader, ErrStartAsForeground, "got message when starting das as foreground")
-	Messages[ErrSavePidToFile] = config.NewErrMessage(DefaultMessageHeader, ErrSavePidToFile, "got message when writing pid to file")
-	Messages[ErrKillServerWithPid] = config.NewErrMessage(DefaultMessageHeader, ErrKillServerWithPid, "kill server failed. pid: %d")
-	Messages[ErrKillServerWithPidFile] = config.NewErrMessage(DefaultMessageHeader, ErrKillServerWithPidFile, "kill server with pid file failed. pid: %d, pid file: %s")
-	Messages[ErrGetPidFromPidFile] = config.NewErrMessage(DefaultMessageHeader, ErrGetPidFromPidFile, "get pid from pid file failed. pid file: %s")
-	Messages[ErrSetSid] = config.NewErrMessage(DefaultMessageHeader, ErrSetSid, "set sid failed when daemonizing server")
-	Messages[ErrRemovePidFile] = config.NewErrMessage(DefaultMessageHeader, ErrRemovePidFile, "remove pid file failed. pid file: %s")
 	Messages[ErrEmptyStructFile] = config.NewErrMessage(DefaultMessageHeader, ErrEmptyStructFile, "struct file could not be an empty string")
 	Messages[ErrNotValidStructFile] = config.NewErrMessage(DefaultMessageHeader, ErrNotValidStructFile, "struct file must be either unix or windows path format, %s is not valid")
 	Messages[ErrReadStructFile] = config.NewErrMessage(DefaultMessageHeader, ErrReadStructFile, "read struct file failed")

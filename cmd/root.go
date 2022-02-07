@@ -58,17 +58,6 @@ var rootCmd = &cobra.Command{
 	Short: "go-generator",
 	Long:  `go-generator is a template of golang command line program`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// if no subcommand is set, it will print help information.
-		// if len(args) == 0 {
-		// 	err := cmd.Help()
-		// 	if err != nil {
-		// 		fmt.Println(fmt.Sprintf("%+v", message.NewMessage(message.ErrPrintHelpInfo, errors.Trace(err))))
-		// 		os.Exit(constant.DefaultAbnormalExitCode)
-		// 	}
-		//
-		// 	os.Exit(constant.DefaultNormalExitCode)
-		// }
-
 		// init config
 		err := initConfig()
 		if err != nil {
@@ -90,11 +79,14 @@ var rootCmd = &cobra.Command{
 			os.Exit(constant.DefaultAbnormalExitCode)
 		}
 		// write output file
-		err = ioutil.WriteFile(viper.GetString(config.OutputFileKey), data, constant.DefaultFileMode)
+		outputFile := viper.GetString(config.OutputFileKey)
+		err = ioutil.WriteFile(outputFile, data, constant.DefaultFileMode)
 		if err != nil {
 			fmt.Println(fmt.Sprintf("%+v", message.NewMessage(message.ErrWriteOutputFile, err)))
 			os.Exit(constant.DefaultAbnormalExitCode)
 		}
+
+		fmt.Println(message.NewMessage(message.InfoGenerateGetter, outputFile).Error())
 	},
 }
 

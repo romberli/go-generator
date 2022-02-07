@@ -8,6 +8,7 @@
 *.pid
 *.test
 go-template
+generator
 
 # config
 .idea/
@@ -30,3 +31,4 @@ http-client.env.json
 .test
 go_template.pid
 go_template.yaml
+test/generator
