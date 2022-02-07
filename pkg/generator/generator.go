@@ -56,6 +56,6 @@ func (g *Generator) getStructGetter(s *util.Struct) string {
 func (g *Generator) getFieldGetter(s *util.Struct, field *util.Field) string {
 	fn := strings.ToUpper(field.Name[:1]) + field.Name[1:]
 
-	return fmt.Sprintf("// Get%s returns %s\nfunc (%s *%s) Get%s() %s {\n    return %s.%s\n}\n\n",
+	return fmt.Sprintf("// Get%s returns the %s\nfunc (%s *%s) Get%s() %s {\n    return %s.%s\n}\n\n",
 		fn, field.Name, s.GetShortName(), s.Name, fn, field.Type, s.GetShortName(), field.Name)
 }
