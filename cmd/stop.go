@@ -40,7 +40,6 @@ var stopCmd = &cobra.Command{
 			fmt.Println(fmt.Sprintf("%+v", message.NewMessage(message.ErrInitConfig, err)))
 			os.Exit(constant.DefaultAbnormalExitCode)
 		}
-
 		os.Exit(constant.DefaultNormalExitCode)
 	},
 }
